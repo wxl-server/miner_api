@@ -1,5 +1,6 @@
-FROM registry.cn-hangzhou.aliyuncs.com/qcq-wxl/golang:1.20.14
+FROM golang:1.20.14
 LABEL authors="wxl"
+EXPOSE 8888
 
 # 设置工作目录
 WORKDIR /miner_api
