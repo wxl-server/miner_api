@@ -1,4 +1,4 @@
-FROM golang:1.20.14
+FROM golang:1.20.14-alpine
 LABEL authors="wxl"
 EXPOSE 8888
 
