@@ -22,7 +22,7 @@ func HelloMethod(ctx context.Context, c *app.RequestContext) {
 	}
 
 	resp := &miner_api.HelloResp{
-		RespBody: "Yes!",
+		RespBody: "Yes!!!",
 	}
 
 	c.JSON(consts.StatusOK, resp)
