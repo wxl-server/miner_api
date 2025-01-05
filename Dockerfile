@@ -1,4 +1,4 @@
-FROM golang:1.20.14
+FROM registry.cn-hangzhou.aliyuncs.com/qcq-wxl/golang:1.20.14
 LABEL authors="wxl"
 
 # 设置工作目录
