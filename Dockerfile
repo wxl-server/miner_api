@@ -14,9 +14,6 @@ RUN go mod download
 # 复制项目文件
 COPY . .
 
-# 安装 Hertz 框架
-RUN go install github.com/cloudwego/hertz/cmd/hz@latest
-
 # 编译 Go 代码
 RUN go build -o main .
 
