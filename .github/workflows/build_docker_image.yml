@@ -8,6 +8,7 @@ env:
   ALICLOUD_USERNAME: 个人号
   NAMESPACE: qcq-wxl
   IMAGE_NAME: miner_api
+  TAG_NAME: latest
 
 jobs:
   build:
@@ -23,9 +24,9 @@ jobs:
       - name: Log in to Alibaba Cloud Container Registry
         run: echo ${{ secrets.ALICLOUD_PASSWORD }} | docker login --username ${{ env.ALICLOUD_USERNAME }} --password-stdin registry.cn-hangzhou.aliyuncs.com
 
-      - name: Extract tag name
-        id: extract_tag
-        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+#      - name: Extract tag name
+#        id: extract_tag
+#        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         run: |
