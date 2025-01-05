@@ -28,7 +28,7 @@ func HelloMethod(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 
-	cli, err := itemservice.NewClient("miner-core", client.WithResolver(dns.NewDNSResolver()))
+	cli, err := itemservice.NewClient("miner-core.miner", client.WithResolver(dns.NewDNSResolver()))
 	if err != nil {
 		log.Fatal(err)
 	}
