@@ -1,6 +1,9 @@
 FROM registry.cn-hangzhou.aliyuncs.com/qcq-wxl/golang:1.20.14
 LABEL authors="wxl"
 
+# 设置环境变量
+RUN go env -w GOPROXY=https://goproxy.cn
+
 # 设置工作目录
 WORKDIR /miner_api
 
