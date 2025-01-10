@@ -7,7 +7,6 @@ require (
 	github.com/bytedance/gopkg v0.1.1
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
-	github.com/kitex-contrib/resolver-dns v0.1.0
 	github.com/qcq1/rpc_miner_core v0.0.0-20250104124443-1b9e06e8b95b
 )
 

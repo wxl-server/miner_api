@@ -2,13 +2,18 @@
 namespace go miner_api
 
 struct HelloReq {
-    1: string ID (api.query="id"); // 添加 api 注解为方便进行参数绑定
+    1: string ID (api.query="id");
 }
 
 struct HelloResp {
-    1: string RespBody;
+    1: required i64 code;
+    2: required string message;
+    3: optional HelloData data;
 }
 
+struct HelloData {
+    1: required string RespBody;
+}
 
 service HelloService {
     HelloResp HelloMethod(1: HelloReq request) (api.get="/hello");

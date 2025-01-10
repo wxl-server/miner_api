@@ -5,49 +5,77 @@ package miner_api
 import (
 	"context"
 	"encoding/json"
-	"github.com/bytedance/gopkg/util/logger"
-	"github.com/cloudwego/kitex/client"
-	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
-	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core/itemservice"
-	"log"
+	"miner_api/biz/common/Status"
+	miner_api "miner_api/biz/model/miner_api"
+	"miner_api/biz/sal/rpc/miner_miner_core"
 
+	"github.com/bytedance/gopkg/util/logger"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	miner_api "miner_api/biz/model/miner_api"
+	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
 )
 
 // HelloMethod .
 // @router /hello [GET]
 func HelloMethod(ctx context.Context, c *app.RequestContext) {
-	var err error
+	NewHelloHandler(ctx, c).Handle()
+}
+
+type HelloHandler struct {
+	ctx      context.Context
+	hertzCtx *app.RequestContext
+
+	respData *miner_api.HelloData
+}
+
+func NewHelloHandler(ctx context.Context, hertzCtx *app.RequestContext) *HelloHandler {
+	return &HelloHandler{
+		ctx:      ctx,
+		hertzCtx: hertzCtx,
+	}
+}
+
+func (h *HelloHandler) Handle() {
+	ctx := h.ctx
 	var req miner_api.HelloReq
-	err = c.BindAndValidate(&req)
+	err := h.hertzCtx.BindAndValidate(&req)
 	if err != nil {
-		c.String(consts.StatusBadRequest, err.Error())
+		h.hertzCtx.String(consts.StatusBadRequest, err.Error())
 		return
 	}
 
-	cli, err := itemservice.NewClient("miner-core", client.WithHostPorts("miner-core.miner.svc.cluster.local:8888"))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	resp1, err := cli.GetItem(ctx, &miner_core.GetItemReq{
+	coreResp, err := miner_miner_core.RawCall.GetItem(ctx, &miner_core.GetItemReq{
 		Id: 1,
 	})
 	if err != nil {
-		logger.CtxErrorf(ctx, "client.GetItem failed, err: %v", err)
+		logger.CtxErrorf(ctx, "miner_miner_core.RawCall.GetItem failed, err = %v", err)
 		return
 	}
 
-	marshal, err := json.Marshal(resp1)
+	h.respData = h.RpcResp2HttpResp(coreResp)
+	h.ReturnResp(Status.Success, err)
+}
+
+func (h *HelloHandler) ReturnResp(status *Status.Status, err error) {
 	if err != nil {
-		logger.CtxErrorf(ctx, "json.Marshal failed, err: %v", err)
-		return
+		logger.CtxErrorf(h.ctx, "Hello failed, err = %v", err)
 	}
-	resp := &miner_api.HelloResp{
+	resp := new(miner_api.HelloResp)
+	resp.Code = status.Code()
+	resp.Message = status.Message()
+	if status.Code() == Status.Success.Code() && err == nil {
+		resp.Data = h.respData
+	}
+	logger.CtxInfof(h.ctx, "Hello, resp = %v", resp)
+	h.hertzCtx.JSON(consts.StatusOK, &resp)
+}
+
+func (h *HelloHandler) RpcResp2HttpResp(rpcResp *miner_core.GetItemResp) *miner_api.HelloData {
+	marshal, err := json.Marshal(rpcResp.Item)
+	if err != nil {
+		return nil
+	}
+	return &miner_api.HelloData{
 		RespBody: string(marshal),
 	}
-
-	c.JSON(consts.StatusOK, resp)
 }
