@@ -2,6 +2,8 @@ package miner_miner_core
 
 import (
 	"context"
+	"github.com/qcq1/common/env"
+	"miner_api/biz/sal/rpc"
 
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/cloudwego/kitex/client"
@@ -13,8 +15,7 @@ import (
 var RawCall = NewRawCall()
 
 const (
-	K8SServiceName = "miner-core"
-	K8SHostPort    = "miner-core.miner.svc.cluster.local:8888"
+	ServiceName = "miner-core"
 )
 
 type RawCallStruct struct {
@@ -24,7 +25,7 @@ type RawCallStruct struct {
 func NewRawCall() *RawCallStruct {
 	r := &RawCallStruct{}
 	var err error
-	r.client, err = itemservice.NewClient(K8SServiceName, client.WithHostPorts(K8SHostPort))
+	r.client, err = itemservice.NewClient(ServiceName, client.WithHostPorts(rpc.Router[ServiceName][env.GetEnv()]))
 	if err != nil {
 		logger.Errorf("itemservice.NewClient failed, err: %v", err)
 		panic(err)
