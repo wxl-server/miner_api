@@ -5,7 +5,7 @@ package miner_api
 import (
 	"context"
 	"encoding/json"
-	"github.com/luci/go-render/render"
+	"github.com/qcq1/common/render"
 	"miner_api/biz/common/Status"
 	miner_api "miner_api/biz/model/miner_api"
 	"miner_api/biz/sal/rpc/miner_miner_core"

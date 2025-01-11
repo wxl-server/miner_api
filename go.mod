@@ -8,7 +8,7 @@ require (
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
 	github.com/luci/go-render v0.0.0-20160219211803-9a04cc21af0f
-	github.com/qcq1/common v0.0.0-20250111105732-838091a73aa8
+	github.com/qcq1/common v0.0.0-20250111114646-75b76572cb2c
 	github.com/qcq1/rpc_miner_core v0.0.0-20250104124443-1b9e06e8b95b
 )
 
