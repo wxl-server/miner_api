@@ -2,6 +2,7 @@ package miner_miner_core
 
 import (
 	"context"
+	"github.com/luci/go-render/render"
 	"github.com/qcq1/common/env"
 	"miner_api/biz/sal/rpc"
 
@@ -34,12 +35,12 @@ func NewRawCall() *RawCallStruct {
 }
 
 func (r *RawCallStruct) GetItem(ctx context.Context, req *miner_core.GetItemReq, callOptions ...callopt.Option) (resp *miner_core.GetItemResp, err error) {
-	logger.CtxInfof(ctx, "client.GetItem req: %v", req)
+	logger.CtxInfof(ctx, "client.GetItem req = %v", render.Render(req))
 	resp, err = r.client.GetItem(ctx, req, callOptions...)
 	if err != nil {
 		logger.CtxErrorf(ctx, "client.GetItem failed, err: %v", err)
 		return
 	}
-	logger.CtxInfof(ctx, "client.GetItem resp: %v", resp)
+	logger.CtxInfof(ctx, "client.GetItem resp = %v", render.Render(resp))
 	return
 }

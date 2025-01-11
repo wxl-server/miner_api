@@ -5,6 +5,7 @@ package miner_api
 import (
 	"context"
 	"encoding/json"
+	"github.com/luci/go-render/render"
 	"miner_api/biz/common/Status"
 	miner_api "miner_api/biz/model/miner_api"
 	"miner_api/biz/sal/rpc/miner_miner_core"
@@ -66,7 +67,7 @@ func (h *HelloHandler) ReturnResp(status *Status.Status, err error) {
 	if status.Code() == Status.Success.Code() && err == nil {
 		resp.Data = h.respData
 	}
-	logger.CtxInfof(h.ctx, "Hello, resp = %v", resp)
+	logger.CtxInfof(h.ctx, "Hello, resp = %v", render.Render(resp))
 	h.hertzCtx.JSON(consts.StatusOK, &resp)
 }
 
