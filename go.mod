@@ -3,15 +3,16 @@ module miner_api
 go 1.20
 
 require (
-	github.com/apache/thrift v0.13.0
 	github.com/bytedance/gopkg v0.1.1
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
 	github.com/qcq1/common v0.0.0-20250112054851-869cc7d6e4ca
 	github.com/qcq1/rpc_miner_core v0.0.0-20250112054317-7a6c69336b58
+	google.golang.org/protobuf v1.33.0
 )
 
 require (
+	github.com/apache/thrift v0.13.0 // indirect
 	github.com/bytedance/sonic v1.12.5 // indirect
 	github.com/bytedance/sonic/loader v0.2.0 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
@@ -53,7 +54,6 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/genproto v0.0.0-20210602131652-f16073e35f0c // indirect
 	google.golang.org/grpc v1.41.0 // indirect
-	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
