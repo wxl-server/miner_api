@@ -7,7 +7,7 @@ require (
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
 	github.com/qcq1/common v0.0.0-20250112054851-869cc7d6e4ca
-	github.com/qcq1/rpc_miner_core v0.0.0-20250112054317-7a6c69336b58
+	github.com/qcq1/rpc_miner_core v0.0.0-20250112080543-67387b0a516f
 	google.golang.org/protobuf v1.33.0
 )
 
