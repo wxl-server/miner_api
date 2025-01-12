@@ -21,7 +21,7 @@ func Register(r *server.Hertz) {
 		_job := root.Group("/job", _jobMw()...)
 		{
 			_query := _job.Group("/query", _queryMw()...)
-			_query.GET("/list", append(_queryjoblistMw(), model.QueryJobList)...)
+			_query.POST("/list", append(_queryjoblistMw(), model.QueryJobList)...)
 		}
 	}
 }
