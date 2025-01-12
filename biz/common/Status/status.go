@@ -1,21 +1,23 @@
 package Status
 
+import "github.com/qcq1/common/gptr"
+
 type Status struct {
-	code    int64
-	message string
+	code    *int64
+	message *string
 }
 
-func (s *Status) Code() int64 {
+func (s *Status) Code() *int64 {
 	return s.code
 }
 
-func (s *Status) Message() string {
+func (s *Status) Message() *string {
 	return s.message
 }
 
 var (
 	Success = &Status{
-		code:    0,
-		message: "success",
+		code:    gptr.Of(int64(0)),
+		message: gptr.Of("success"),
 	}
 )

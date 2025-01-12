@@ -7,7 +7,6 @@ import (
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/qcq1/common/gptr"
 	"github.com/qcq1/common/gslice"
-	"github.com/qcq1/common/render"
 	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
 	"miner_api/biz/common/Status"
 	"miner_api/biz/sal/rpc/miner_miner_core"
@@ -58,7 +57,7 @@ func (h *QueryJobListHandler) Handle() {
 
 func (h *QueryJobListHandler) ReturnResp(status *Status.Status, err error) {
 	if err != nil {
-		logger.CtxErrorf(h.ctx, "Hello failed, err = %v", err)
+		logger.CtxErrorf(h.ctx, "QueryJobList failed, err = %v", err)
 	}
 	resp := new(model.QueryJobListResp)
 	resp.Code = status.Code()
@@ -66,14 +65,13 @@ func (h *QueryJobListHandler) ReturnResp(status *Status.Status, err error) {
 	if status.Code() == Status.Success.Code() && err == nil {
 		resp.Data = h.respData
 	}
-	logger.CtxInfof(h.ctx, "Hello, resp = %v", render.Render(resp))
 	h.hertzCtx.JSON(consts.StatusOK, &resp)
 }
 
 func (h *QueryJobListHandler) HttpReq2RpcReq(httpReq *model.QueryJobListReq) *miner_core.QueryJobListReq {
 	return &miner_core.QueryJobListReq{
-		PageNum:  httpReq.PageNum,
-		PageSize: httpReq.PageSize,
+		PageNum:  gptr.Indirect(httpReq.PageNum),
+		PageSize: gptr.Indirect(httpReq.PageSize),
 		OrderBy:  (*miner_core.JobColumn)(gptr.Of(int64(gptr.Indirect(httpReq.OrderBy)))),
 		Order:    (*miner_core.Order)(gptr.Of(int64(gptr.Indirect(httpReq.Order)))),
 
@@ -88,16 +86,16 @@ func (h *QueryJobListHandler) RpcResp2HttpResp(rpcResp *miner_core.QueryJobListR
 	return &model.QueryJobListData{
 		JobList: gslice.Map(rpcResp.JobList, func(v *miner_core.Job) *model.Job {
 			return &model.Job{
-				Id:          v.Id,
-				Name:        v.Name,
-				Description: v.Description,
-				CreatedBy:   v.CreatedBy,
-				UpdatedBy:   v.UpdatedBy,
-				CreatedAt:   v.CreatedAt,
-				UpdatedAt:   v.UpdatedAt,
+				Id:          gptr.Of(v.Id),
+				Name:        gptr.Of(v.Name),
+				Description: gptr.Of(v.Description),
+				CreatedBy:   gptr.Of(v.CreatedBy),
+				UpdatedBy:   gptr.Of(v.UpdatedBy),
+				CreatedAt:   gptr.Of(v.CreatedAt),
+				UpdatedAt:   gptr.Of(v.UpdatedAt),
 				Extra:       v.Extra,
 			}
 		}),
-		Total: rpcResp.Total,
+		Total: gptr.Of(rpcResp.Total),
 	}
 }
