@@ -10,7 +10,7 @@ import (
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/client/callopt"
 	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
-	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core/itemservice"
+	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core/minercore"
 )
 
 var RawCall = NewRawCall()
@@ -20,27 +20,27 @@ const (
 )
 
 type RawCallStruct struct {
-	client itemservice.Client
+	client minercore.Client
 }
 
 func NewRawCall() *RawCallStruct {
 	r := &RawCallStruct{}
 	var err error
-	r.client, err = itemservice.NewClient(ServiceName, client.WithHostPorts(rpc.Router[ServiceName][env.GetEnv()]))
+	r.client, err = minercore.NewClient(ServiceName, client.WithHostPorts(rpc.Router[ServiceName][env.GetEnv()]))
 	if err != nil {
-		logger.Errorf("itemservice.NewClient failed, err: %v", err)
+		logger.Errorf("minercore.NewClient failed, err: %v", err)
 		panic(err)
 	}
 	return r
 }
 
-func (r *RawCallStruct) GetItem(ctx context.Context, req *miner_core.GetItemReq, callOptions ...callopt.Option) (resp *miner_core.GetItemResp, err error) {
-	logger.CtxInfof(ctx, "client.GetItem req = %v", render.Render(req))
-	resp, err = r.client.GetItem(ctx, req, callOptions...)
+func (r *RawCallStruct) QueryJobList(ctx context.Context, req *miner_core.QueryJobListReq, callOptions ...callopt.Option) (resp *miner_core.QueryJobListResp, err error) {
+	logger.CtxInfof(ctx, "client.QueryJobList req = %v", render.Render(req))
+	resp, err = r.client.QueryJobList(ctx, req, callOptions...)
 	if err != nil {
-		logger.CtxErrorf(ctx, "client.GetItem failed, err: %v", err)
+		logger.CtxErrorf(ctx, "client.QueryJobList failed, err: %v", err)
 		return
 	}
-	logger.CtxInfof(ctx, "client.GetItem resp = %v", render.Render(resp))
+	logger.CtxInfof(ctx, "client.QueryJobList resp = %v", render.Render(resp))
 	return
 }

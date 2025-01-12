@@ -15,3 +15,18 @@ func _hellomethodMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _jobMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _queryMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _queryjoblistMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}

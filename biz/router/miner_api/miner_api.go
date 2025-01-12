@@ -17,5 +17,11 @@ import (
 func Register(r *server.Hertz) {
 
 	root := r.Group("/", rootMw()...)
-	root.GET("/hello", append(_hellomethodMw(), miner_api.HelloMethod)...)
+	{
+		_job := root.Group("/job", _jobMw()...)
+		{
+			_query := _job.Group("/query", _queryMw()...)
+			_query.POST("/list", append(_queryjoblistMw(), miner_api.QueryJobList)...)
+		}
+	}
 }
