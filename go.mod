@@ -6,7 +6,8 @@ require (
 	github.com/bytedance/gopkg v0.1.1
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
-	github.com/qcq1/common v0.0.0-20250112054851-869cc7d6e4ca
+	github.com/kitex-contrib/resolver-dns v0.1.0
+	github.com/qcq1/common v0.0.0-20250113160738-ebfb6234171c
 	github.com/qcq1/rpc_miner_core v0.0.0-20250112080543-67387b0a516f
 	google.golang.org/protobuf v1.33.0
 )

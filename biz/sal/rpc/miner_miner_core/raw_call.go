@@ -2,13 +2,15 @@ package miner_miner_core
 
 import (
 	"context"
+	"miner_api/biz/sal/rpc"
+
 	"github.com/cloudwego/kitex/client/callopt"
 	"github.com/qcq1/common/env"
 	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
-	"miner_api/biz/sal/rpc"
 
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/cloudwego/kitex/client"
+	dns "github.com/kitex-contrib/resolver-dns"
 	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core/minercore"
 )
 
@@ -25,7 +27,7 @@ type RawCallStruct struct {
 func NewRawCall() *RawCallStruct {
 	r := &RawCallStruct{}
 	var err error
-	r.client, err = minercore.NewClient(ServiceName, client.WithHostPorts(rpc.Router[ServiceName][env.GetEnv()]), client.WithMiddleware(rpc.LogMiddleware))
+	r.client, err = minercore.NewClient(rpc.Router[ServiceName][env.GetEnv()], client.WithResolver(dns.NewDNSResolver()), client.WithMiddleware(rpc.LogMiddleware))
 	if err != nil {
 		logger.Errorf("minercore.NewClient failed, err: %v", err)
 		panic(err)
