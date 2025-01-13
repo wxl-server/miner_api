@@ -4,16 +4,18 @@ package model
 
 import (
 	"context"
+	"miner_api/biz/common/Status"
+	"miner_api/biz/sal/rpc/miner_miner_core"
+
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/qcq1/common/gptr"
 	"github.com/qcq1/common/gslice"
 	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
-	"miner_api/biz/common/Status"
-	"miner_api/biz/sal/rpc/miner_miner_core"
+
+	model "miner_api/biz/model"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	model "miner_api/biz/model"
 )
 
 // QueryJobList .
@@ -47,7 +49,7 @@ func (h *QueryJobListHandler) Handle() {
 
 	coreResp, err := miner_miner_core.RawCall.QueryJobList(ctx, h.HttpReq2RpcReq(&req))
 	if err != nil {
-		logger.CtxErrorf(ctx, "miner_miner_core.RawCall.GetItem failed, err = %v", err)
+		logger.CtxErrorf(ctx, "miner_miner_core.RawCall.QueryJobList failed, err = %v", err)
 		return
 	}
 
