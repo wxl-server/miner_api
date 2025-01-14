@@ -1,0 +1,6 @@
+Nacos:
+  Host: "wxl475.cn"
+  Port: 30898
+  Namespace: "public"
+  Username: "nacos"
+  Password: "wxl5211314"
