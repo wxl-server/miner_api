@@ -6,12 +6,14 @@ import (
 
 	"github.com/cloudwego/kitex/client/callopt"
 	"github.com/cloudwego/kitex/pkg/retry"
-	"github.com/qcq1/common/k8s_dns"
+	"github.com/nacos-group/nacos-sdk-go/clients"
+	"github.com/nacos-group/nacos-sdk-go/vo"
 	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
 
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/cloudwego/kitex/client"
-	dns "github.com/kitex-contrib/resolver-dns"
+	"github.com/kitex-contrib/registry-nacos/resolver"
+	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core/minercore"
 )
 
@@ -30,13 +32,27 @@ type RawCallStruct struct {
 
 func NewRawCall() *RawCallStruct {
 	r := &RawCallStruct{}
-	var err error
+	sc := []constant.ServerConfig{
+		*constant.NewServerConfig("wxl475.cn", 30898),
+	}
+	cc := constant.ClientConfig{
+		NamespaceId: "public",
+		Username:    "nacos",
+		Password:    "wxl5211314",
+	}
+
+	cli, err := clients.NewNamingClient(
+		vo.NacosClientParam{
+			ClientConfig:  &cc,
+			ServerConfigs: sc,
+		},
+	)
+	if err != nil {
+		panic(err)
+	}
 	r.client, err = minercore.NewClient(
-		k8s_dns.BuildK8sDestServiceName(
-			k8s_dns.WithDestServiceName(ServiceName),
-			k8s_dns.WithBoeDestServiceName(BoeServiceName),
-		),
-		client.WithResolver(dns.NewDNSResolver()),
+		"miner_core",
+		client.WithResolver(resolver.NewNacosResolver(cli)),
 		client.WithMiddleware(rpc.LogMiddleware),
 	)
 	if err != nil {
