@@ -1,4 +1,4 @@
-package miner_miner_core
+package miner_core_rpc
 
 import (
 	"context"

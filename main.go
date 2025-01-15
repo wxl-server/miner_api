@@ -4,7 +4,6 @@ package main
 
 import (
 	"context"
-	"miner_api/biz/sal/config"
 
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/cloudwego/hertz/pkg/app/server"
@@ -30,11 +29,6 @@ func initContainer() {
 	// context
 	{
 		mustProvide(func() context.Context { return initCtx })
-	}
-
-	// config
-	{
-		mustProvide(config.InitAppConfig)
 	}
 }
 
