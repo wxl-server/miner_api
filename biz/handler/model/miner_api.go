@@ -47,7 +47,7 @@ func (h *QueryJobListHandler) Handle() {
 		return
 	}
 
-	coreResp, err := miner_miner_core.RawCall.QueryJobList(ctx, h.HttpReq2RpcReq(&req))
+	coreResp, err := miner_miner_core.QueryJobList(ctx, h.HttpReq2RpcReq(&req))
 	if err != nil {
 		logger.CtxErrorf(ctx, "miner_miner_core.RawCall.QueryJobList failed, err = %v", err)
 		return

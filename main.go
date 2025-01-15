@@ -5,7 +5,6 @@ package main
 import (
 	"context"
 	"miner_api/biz/sal/config"
-	"miner_api/biz/sal/rpc/miner_miner_core"
 
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/cloudwego/hertz/pkg/app/server"
@@ -36,11 +35,6 @@ func initContainer() {
 	// config
 	{
 		mustProvide(config.InitAppConfig)
-	}
-
-	// rpc
-	{
-		mustInvoke(miner_miner_core.NewRawCall)
 	}
 }
 
