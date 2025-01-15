@@ -3,45 +3,12 @@
 package main
 
 import (
-	"context"
-
-	"github.com/bytedance/gopkg/util/logger"
 	"github.com/cloudwego/hertz/pkg/app/server"
-	"github.com/qcq1/common/render"
-	"go.uber.org/dig"
-)
-
-var (
-	initCtx   = context.Background()
-	container = dig.New()
 )
 
 func main() {
-	initContainer()
-
 	h := server.Default()
 
 	register(h)
 	h.Spin()
-}
-
-func initContainer() {
-	// context
-	{
-		mustProvide(func() context.Context { return initCtx })
-	}
-}
-
-func mustProvide(constructor interface{}, opts ...dig.ProvideOption) {
-	if err := container.Provide(constructor); err != nil {
-		logger.Errorf("container provide failed, err = %v, constructor = %v", err, render.Render(constructor))
-		panic(err)
-	}
-}
-
-func mustInvoke(function interface{}, opts ...dig.InvokeOption) {
-	if err := container.Invoke(function); err != nil {
-		logger.Errorf("container invoke failed, err = %v, function = %v", err, render.Render(function))
-		panic(err)
-	}
 }
