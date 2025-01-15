@@ -7,9 +7,8 @@ require (
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
 	github.com/kitex-contrib/registry-nacos v0.1.2
-	github.com/luci/go-render v0.0.0-20160219211803-9a04cc21af0f
 	github.com/nacos-group/nacos-sdk-go v1.1.5
-	github.com/qcq1/common v0.0.0-20250113165646-de03731bf0f9
+	github.com/qcq1/common v0.0.0-20250115132611-a73f7da654cd
 	github.com/qcq1/rpc_miner_core v0.0.0-20250112080543-67387b0a516f
 	github.com/spf13/viper v1.19.0
 	go.uber.org/dig v1.18.0
