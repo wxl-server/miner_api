@@ -6,10 +6,10 @@ import (
 	"github.com/cloudwego/kitex/client/callopt"
 	"github.com/cloudwego/kitex/pkg/retry"
 	"github.com/qcq1/common/wxl_cluster"
-	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
+	"github.com/qcq1/idl_gen/kitex_gen/miner_core"
 
 	"github.com/bytedance/gopkg/util/logger"
-	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core/minercore"
+	"github.com/qcq1/idl_gen/kitex_gen/miner_core/minercore"
 )
 
 var client = wxl_cluster.NewClient(minercore.NewClient, "miner_core")

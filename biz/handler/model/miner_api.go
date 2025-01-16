@@ -10,7 +10,7 @@ import (
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/qcq1/common/gptr"
 	"github.com/qcq1/common/gslice"
-	"github.com/qcq1/rpc_miner_core/kitex_gen/miner_core"
+	"github.com/qcq1/idl_gen/kitex_gen/miner_core"
 
 	model "miner_api/biz/model"
 
