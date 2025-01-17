@@ -1,6 +1,6 @@
 package Status
 
-import "github.com/qcq1/common/gptr"
+import "github.com/wxl-server/common/gptr"
 
 type Status struct {
 	code    *int64

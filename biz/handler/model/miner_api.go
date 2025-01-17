@@ -8,8 +8,8 @@ import (
 	"miner_api/biz/sal/rpc/miner_core_rpc"
 
 	"github.com/bytedance/gopkg/util/logger"
-	"github.com/qcq1/common/gptr"
-	"github.com/qcq1/common/gslice"
+	"github.com/wxl-server/common/gptr"
+	"github.com/wxl-server/common/gslice"
 	"github.com/qcq1/idl_gen/kitex_gen/miner_core"
 
 	model "miner_api/biz/model"
