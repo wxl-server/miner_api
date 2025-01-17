@@ -10,7 +10,7 @@ import (
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/wxl-server/common/gptr"
 	"github.com/wxl-server/common/gslice"
-	"github.com/qcq1/idl_gen/kitex_gen/miner_core"
+	"github.com/wxl-server/idl_gen/kitex_gen/miner_core"
 
 	model "miner_api/biz/model"
 

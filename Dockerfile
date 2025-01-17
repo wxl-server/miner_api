@@ -3,7 +3,7 @@ LABEL authors="wxl"
 EXPOSE 8888
 
 # 设置工作目录
-WORKDIR /miner_api
+WORKDIR /app
 
 # 复制 go.mod 和 go.sum 文件
 COPY go.mod go.sum ./
