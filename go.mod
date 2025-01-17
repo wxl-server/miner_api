@@ -1,12 +1,13 @@
 module miner_api
 
-go 1.20
+go 1.23
 
 require (
 	github.com/bytedance/gopkg v0.1.1
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
-	go.uber.org/dig v1.18.0
+	github.com/wxl-server/common v0.0.0-20250117062117-5a3e73943268
+	github.com/wxl-server/idl_gen v0.0.0-20250117064817-a1742ae701f2
 	google.golang.org/protobuf v1.33.0
 )
 
@@ -49,14 +50,11 @@ require (
 	github.com/nyaruka/phonenumbers v1.0.55 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/qcq1/idl_gen v0.0.0-20250116104951-ff9b7f7e0052 // indirect
 	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/tidwall/gjson v1.17.3 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
-	github.com/wxl-server/common v0.0.0-20250117062117-5a3e73943268 // indirect
-	github.com/wxl-server/idl_gen v0.0.0-20250117064817-a1742ae701f2 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
 	go.uber.org/zap v1.21.0 // indirect
