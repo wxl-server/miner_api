@@ -20,4 +20,12 @@ var (
 		code:    gptr.Of(int64(0)),
 		message: gptr.Of("success"),
 	}
+	RequestParamsInvalid = &Status{
+		code:    gptr.Of(int64(1)),
+		message: gptr.Of("request params invalid"),
+	}
+	InternalError = &Status{
+		code:    gptr.Of(int64(2)),
+		message: gptr.Of("internal error"),
+	}
 )

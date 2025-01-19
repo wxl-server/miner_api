@@ -24,4 +24,8 @@ func Register(r *server.Hertz) {
 			_query.POST("/list", append(_queryjoblistMw(), model.QueryJobList)...)
 		}
 	}
+	{
+		_user := root.Group("/user", _userMw()...)
+		_user.POST("/signup", append(_signupMw(), model.SignUp)...)
+	}
 }

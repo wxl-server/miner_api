@@ -25,3 +25,13 @@ func _queryjoblistMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _userMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _signupMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}

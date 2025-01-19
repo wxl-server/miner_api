@@ -43,13 +43,14 @@ func (h *QueryJobListHandler) Handle() {
 	var req model.QueryJobListReq
 	err := h.hertzCtx.BindAndValidate(&req)
 	if err != nil {
-		h.hertzCtx.String(consts.StatusBadRequest, err.Error())
+		h.ReturnResp(Status.RequestParamsInvalid, err)
 		return
 	}
 
 	coreResp, err := miner_core_rpc.QueryJobList(ctx, h.HttpReq2RpcReq(&req))
 	if err != nil {
 		logger.CtxErrorf(ctx, "miner_core.RawCall.QueryJobList failed, err = %v", err)
+		h.ReturnResp(Status.InternalError, err)
 		return
 	}
 
