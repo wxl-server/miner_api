@@ -2,14 +2,15 @@ package model
 
 import (
 	"context"
+	"miner_api/biz/common/Status"
+	"miner_api/biz/model"
+	"miner_api/biz/sal/rpc/common_user_rpc"
+
 	"github.com/bytedance/gopkg/util/logger"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 	"github.com/wxl-server/common/gptr"
 	"github.com/wxl-server/idl_gen/kitex_gen/common_user"
-	"miner_api/biz/common/Status"
-	"miner_api/biz/model"
-	"miner_api/biz/sal/rpc/common_user_rpc"
 )
 
 // SignUp .

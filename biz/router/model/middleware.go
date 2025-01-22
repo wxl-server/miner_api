@@ -35,3 +35,13 @@ func _signupMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _passwordMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _updatepasswordMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}

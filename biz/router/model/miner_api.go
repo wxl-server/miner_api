@@ -27,5 +27,9 @@ func Register(r *server.Hertz) {
 	{
 		_user := root.Group("/user", _userMw()...)
 		_user.POST("/signup", append(_signupMw(), model.SignUp)...)
+		{
+			_password := _user.Group("/password", _passwordMw()...)
+			_password.POST("/update", append(_updatepasswordMw(), model.UpdatePassword)...)
+		}
 	}
 }
