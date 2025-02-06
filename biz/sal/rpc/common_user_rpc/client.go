@@ -4,6 +4,8 @@ import (
 	"context"
 
 	"github.com/bytedance/gopkg/util/logger"
+	"github.com/cloudwego/kitex/client/callopt"
+	"github.com/cloudwego/kitex/pkg/retry"
 	"github.com/wxl-server/common/wxl_cluster"
 	"github.com/wxl-server/idl_gen/kitex_gen/common_user"
 	"github.com/wxl-server/idl_gen/kitex_gen/common_user/commonuser"
@@ -29,4 +31,14 @@ func UpdatePassword(ctx context.Context, req *common_user.UpdatePasswordReq) (re
 		return
 	}
 	return
+}
+
+func ValidateToken(ctx context.Context, req *common_user.ValidateTokenReq) (resp *common_user.ValidateTokenResp, err error) {
+	// 请求，最大重试2次
+	resp, err = client.ValidateToken(ctx, req, callopt.WithRetryPolicy(retry.BuildFailurePolicy(retry.NewFailurePolicy())))
+	if err != nil {
+		logger.CtxErrorf(ctx, "ValidateToken failed, err = %v", err)
+		return nil, err
+	}
+	return resp, nil
 }
