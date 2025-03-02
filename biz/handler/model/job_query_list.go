@@ -79,6 +79,7 @@ func (h *QueryJobListHandler) HttpReq2RpcReq(httpReq *model.QueryJobListReq) *mi
 		Order:    (*miner_core.Order)(gptr.Of(int64(gptr.Indirect(httpReq.Order)))),
 
 		Id:             httpReq.Id,
+		Name:           httpReq.Name,
 		CreatedBy:      httpReq.CreatedBy,
 		CreatedAtStart: httpReq.CreatedAtStart,
 		CreatedAtEnd:   httpReq.CreatedAtEnd,
@@ -92,13 +93,20 @@ func (h *QueryJobListHandler) RpcResp2HttpResp(rpcResp *miner_core.QueryJobListR
 				Id:          gptr.Of(v.Id),
 				Name:        gptr.Of(v.Name),
 				Description: gptr.Of(v.Description),
-				CreatedBy:   gptr.Of(v.CreatedBy),
-				UpdatedBy:   gptr.Of(v.UpdatedBy),
+				CreatedBy:   h.rpcUser2HttpUser(v.CreatedBy),
+				UpdatedBy:   h.rpcUser2HttpUser(v.UpdatedBy),
 				CreatedAt:   gptr.Of(v.CreatedAt),
 				UpdatedAt:   gptr.Of(v.UpdatedAt),
 				Extra:       v.Extra,
 			}
 		}),
 		Total: gptr.Of(rpcResp.Total),
+	}
+}
+
+func (h *QueryJobListHandler) rpcUser2HttpUser(rpcUser *miner_core.User) *model.User {
+	return &model.User{
+		Id:    gptr.Of(rpcUser.Id),
+		Email: gptr.Of(rpcUser.Email),
 	}
 }

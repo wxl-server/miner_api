@@ -45,3 +45,58 @@ func _updatepasswordMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _loginMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _createjobMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _queryjobdetailMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _indicatorMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _queryindicatorlistMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _query0Mw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _deletejobMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _query1Mw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _queryuserlistMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _taskMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _runtaskMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}

@@ -6,8 +6,8 @@ require (
 	github.com/bytedance/gopkg v0.1.1
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
-	github.com/wxl-server/common v0.0.0-20250123083438-70335090ef17
-	github.com/wxl-server/idl_gen v0.0.0-20250125072451-3498cdbf61a5
+	github.com/wxl-server/common v0.0.0-20250302041515-f626a63a7fe0
+	github.com/wxl-server/idl_gen v0.0.0-20250302125547-e01d1de170ca
 	google.golang.org/protobuf v1.33.0
 )
 

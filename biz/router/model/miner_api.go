@@ -18,18 +18,32 @@ func Register(r *server.Hertz) {
 
 	root := r.Group("/", rootMw()...)
 	{
-		_job := root.Group("/job", _jobMw()...)
+		_indicator := root.Group("/indicator", _indicatorMw()...)
 		{
-			_query := _job.Group("/query", _queryMw()...)
-			_query.POST("/list", append(_queryjoblistMw(), model.QueryJobList)...)
+			_query := _indicator.Group("/query", _queryMw()...)
+			_query.GET("/list", append(_queryindicatorlistMw(), model.QueryIndicatorList)...)
 		}
 	}
 	{
+		_job := root.Group("/job", _jobMw()...)
+		_job.POST("/create", append(_createjobMw(), model.CreateJob)...)
+		_job.POST("/delete", append(_deletejobMw(), model.DeleteJob)...)
+		{
+			_query0 := _job.Group("/query", _query0Mw()...)
+			_query0.POST("/list", append(_queryjoblistMw(), model.QueryJobList)...)
+		}
+	}
+	{
+		_task := root.Group("/task", _taskMw()...)
+		_task.GET("/run", append(_runtaskMw(), model.RunTask)...)
+	}
+	{
 		_user := root.Group("/user", _userMw()...)
+		_user.POST("/login", append(_loginMw(), model.Login)...)
 		_user.POST("/signup", append(_signupMw(), model.SignUp)...)
 		{
-			_password := _user.Group("/password", _passwordMw()...)
-			_password.POST("/update", append(_updatepasswordMw(), model.UpdatePassword)...)
+			_query1 := _user.Group("/query", _query1Mw()...)
+			_query1.GET("/list", append(_queryuserlistMw(), model.QueryUserList)...)
 		}
 	}
 }
