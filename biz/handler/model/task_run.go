@@ -46,7 +46,8 @@ func (h *RunTaskHandler) Handle() {
 		return
 	}
 
-	resp, err := miner_core_rpc.RunTask(ctx, h.HttpReq2RpcReq(&req))
+	token := h.hertzCtx.GetHeader("token")
+	resp, err := miner_core_rpc.RunTask(ctx, h.HttpReq2RpcReq(&req, token))
 	if err != nil {
 		logger.CtxErrorf(ctx, "miner_core_rpc.RunTask failed, err = %v", err)
 		h.ReturnResp(Status.InternalError, err)
@@ -57,7 +58,7 @@ func (h *RunTaskHandler) Handle() {
 	h.ReturnResp(Status.Success, err)
 }
 
-func (h *RunTaskHandler) HttpReq2RpcReq(httpReq *model.RunTaskReq) *miner_core.RunTaskReq {
+func (h *RunTaskHandler) HttpReq2RpcReq(httpReq *model.RunTaskReq, token []byte) *miner_core.RunTaskReq {
 	return &miner_core.RunTaskReq{
 		JobId: gptr.Indirect(httpReq.JobId),
 		Rules: gslice.Map(httpReq.Rules, func(v *model.Rule) *miner_core.Rule {
@@ -70,6 +71,7 @@ func (h *RunTaskHandler) HttpReq2RpcReq(httpReq *model.RunTaskReq) *miner_core.R
 		}),
 		LogicExpression: gptr.Indirect(httpReq.LogicExpression),
 		Limit:           gptr.Indirect(httpReq.Limit),
+		Token:           string(token),
 	}
 }
 func (h *RunTaskHandler) RpcResp2HttpResp(rpcResp *miner_core.RunTaskResp) *model.RunTaskData {

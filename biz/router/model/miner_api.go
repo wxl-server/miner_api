@@ -35,10 +35,10 @@ func Register(r *server.Hertz) {
 	}
 	{
 		_task := root.Group("/task", _taskMw()...)
-		_task.GET("/run", append(_runtaskMw(), model.RunTask)...)
+		_task.POST("/run", append(_runtaskMw(), model.RunTask)...)
 		{
 			_query1 := _task.Group("/query", _query1Mw()...)
-			_query1.GET("/list", append(_querytasklistMw(), model.QueryTaskList)...)
+			_query1.POST("/list", append(_querytasklistMw(), model.QueryTaskList)...)
 		}
 	}
 	{
