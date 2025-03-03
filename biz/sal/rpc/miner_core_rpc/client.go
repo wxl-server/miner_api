@@ -84,6 +84,16 @@ func QueryIndicatorList(ctx context.Context, req *miner_core.QueryIndicatorListR
 	return
 }
 
+func QueryTaskList(ctx context.Context, req *miner_core.QueryTaskListReq) (resp *miner_core.QueryTaskListResp, err error) {
+	// 请求，最大重试2次
+	resp, err = client.QueryTaskList(ctx, req, callopt.WithRetryPolicy(retry.BuildFailurePolicy(retry.NewFailurePolicy())))
+	if err != nil {
+		logger.CtxErrorf(ctx, "client.QueryTaskList failed, err = %v", err)
+		return
+	}
+	return
+}
+
 func RunTask(ctx context.Context, req *miner_core.RunTaskReq) (resp *miner_core.RunTaskResp, err error) {
 	// rpc不保证幂等，不重试
 	resp, err = client.RunTask(ctx, req)

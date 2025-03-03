@@ -100,3 +100,13 @@ func _runtaskMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _querytasklistMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _query2Mw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
