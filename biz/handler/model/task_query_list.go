@@ -75,6 +75,7 @@ func (h *QueryTaskListHandler) HttpReq2RpcReq(httpReq *model.QueryTaskListReq) *
 		PageNum:  gptr.Indirect(httpReq.PageNum),
 		PageSize: gptr.Indirect(httpReq.PageSize),
 
+		Id:    httpReq.Id,
 		JobId: httpReq.JobId,
 	}
 }
