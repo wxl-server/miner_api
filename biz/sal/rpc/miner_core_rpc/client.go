@@ -103,3 +103,13 @@ func RunTask(ctx context.Context, req *miner_core.RunTaskReq) (resp *miner_core.
 	}
 	return
 }
+
+func QueryTaskResultList(ctx context.Context, req *miner_core.QueryTaskResultListReq) (resp *miner_core.QueryTaskResultListResp, err error) {
+	// 请求，最大重试2次
+	resp, err = client.QueryTaskResultList(ctx, req, callopt.WithRetryPolicy(retry.BuildFailurePolicy(retry.NewFailurePolicy())))
+	if err != nil {
+		logger.CtxErrorf(ctx, "client.GetTaskResultList failed, err = %v", err)
+		return
+	}
+	return
+}

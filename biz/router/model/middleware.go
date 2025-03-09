@@ -110,3 +110,18 @@ func _query2Mw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _task_resultMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _querytaskresultlistMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _query3Mw() []app.HandlerFunc {
+	// your code...
+	return nil
+}

@@ -42,12 +42,19 @@ func Register(r *server.Hertz) {
 		}
 	}
 	{
+		_task_result := root.Group("/task_result", _task_resultMw()...)
+		{
+			_query2 := _task_result.Group("/query", _query2Mw()...)
+			_query2.POST("/list", append(_querytaskresultlistMw(), model.QueryTaskResultList)...)
+		}
+	}
+	{
 		_user := root.Group("/user", _userMw()...)
 		_user.POST("/login", append(_loginMw(), model.Login)...)
 		_user.POST("/signup", append(_signupMw(), model.SignUp)...)
 		{
-			_query2 := _user.Group("/query", _query2Mw()...)
-			_query2.GET("/list", append(_queryuserlistMw(), model.QueryUserList)...)
+			_query3 := _user.Group("/query", _query3Mw()...)
+			_query3.GET("/list", append(_queryuserlistMw(), model.QueryUserList)...)
 		}
 	}
 }
