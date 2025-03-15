@@ -88,7 +88,7 @@ func (h *QueryTaskResultListHandler) RpcResp2HttpResp(rpcResp *miner_core.QueryT
 				Product: &model.Product{
 					ProductId:           gptr.Of(v.Product.ProductId),
 					ProductName:         gptr.Of(v.Product.ProductName),
-					ImageUrls:           gptr.Of(v.Product.ImageUrls),
+					ImageUrls:           v.Product.ImageUrls,
 					ShopImageUrl:        gptr.Of(v.Product.ShopImageUrl),
 					ShopId:              gptr.Of(v.Product.ShopId),
 					Status:              gptr.Of(v.Product.Status),

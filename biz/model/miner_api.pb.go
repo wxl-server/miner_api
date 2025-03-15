@@ -2660,21 +2660,21 @@ type Product struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ProductId           *int64  `protobuf:"varint,1,req,name=product_id,json=productId" form:"product_id,required" json:"product_id,required" query:"product_id,required"`
-	ProductName         *string `protobuf:"bytes,2,req,name=product_name,json=productName" form:"product_name,required" json:"product_name,required" query:"product_name,required"`
-	ImageUrls           *string `protobuf:"bytes,3,req,name=image_urls,json=imageUrls" form:"image_urls,required" json:"image_urls,required" query:"image_urls,required"`
-	ShopImageUrl        *string `protobuf:"bytes,4,req,name=shop_image_url,json=shopImageUrl" form:"shop_image_url,required" json:"shop_image_url,required" query:"shop_image_url,required"`
-	ShopId              *int64  `protobuf:"varint,5,req,name=shop_id,json=shopId" form:"shop_id,required" json:"shop_id,required" query:"shop_id,required"`
-	Status              *int64  `protobuf:"varint,6,req,name=status" form:"status,required" json:"status,required" query:"status,required"`
-	ShopName            *string `protobuf:"bytes,7,req,name=shop_name,json=shopName" form:"shop_name,required" json:"shop_name,required" query:"shop_name,required"`
-	BrandId             *int64  `protobuf:"varint,8,opt,name=brand_id,json=brandId" form:"brand_id" json:"brand_id,omitempty" query:"brand_id"`
-	BrandName           *string `protobuf:"bytes,9,opt,name=brand_name,json=brandName" form:"brand_name" json:"brand_name,omitempty" query:"brand_name"`
-	IsBrandAuthorized   *int64  `protobuf:"varint,10,opt,name=is_brand_authorized,json=isBrandAuthorized" form:"is_brand_authorized" json:"is_brand_authorized,omitempty" query:"is_brand_authorized"`
-	LogoModelBrandId    *int64  `protobuf:"varint,11,opt,name=logo_model_brand_id,json=logoModelBrandId" form:"logo_model_brand_id" json:"logo_model_brand_id,omitempty" query:"logo_model_brand_id"`
-	LogoModelBrandName  *string `protobuf:"bytes,12,opt,name=logo_model_brand_name,json=logoModelBrandName" form:"logo_model_brand_name" json:"logo_model_brand_name,omitempty" query:"logo_model_brand_name"`
-	ImageModelBrandId   *int64  `protobuf:"varint,13,opt,name=image_model_brand_id,json=imageModelBrandId" form:"image_model_brand_id" json:"image_model_brand_id,omitempty" query:"image_model_brand_id"`
-	ImageModelBrandName *string `protobuf:"bytes,14,opt,name=image_model_brand_name,json=imageModelBrandName" form:"image_model_brand_name" json:"image_model_brand_name,omitempty" query:"image_model_brand_name"`
-	Extra               *string `protobuf:"bytes,15,opt,name=extra" form:"extra" json:"extra,omitempty" query:"extra"`
+	ProductId           *int64   `protobuf:"varint,1,req,name=product_id,json=productId" form:"product_id,required" json:"product_id,required" query:"product_id,required"`
+	ProductName         *string  `protobuf:"bytes,2,req,name=product_name,json=productName" form:"product_name,required" json:"product_name,required" query:"product_name,required"`
+	ImageUrls           []string `protobuf:"bytes,3,rep,name=image_urls,json=imageUrls" form:"image_urls" json:"image_urls,omitempty" query:"image_urls"`
+	ShopImageUrl        *string  `protobuf:"bytes,4,req,name=shop_image_url,json=shopImageUrl" form:"shop_image_url,required" json:"shop_image_url,required" query:"shop_image_url,required"`
+	ShopId              *int64   `protobuf:"varint,5,req,name=shop_id,json=shopId" form:"shop_id,required" json:"shop_id,required" query:"shop_id,required"`
+	Status              *int64   `protobuf:"varint,6,req,name=status" form:"status,required" json:"status,required" query:"status,required"`
+	ShopName            *string  `protobuf:"bytes,7,req,name=shop_name,json=shopName" form:"shop_name,required" json:"shop_name,required" query:"shop_name,required"`
+	BrandId             *int64   `protobuf:"varint,8,opt,name=brand_id,json=brandId" form:"brand_id" json:"brand_id,omitempty" query:"brand_id"`
+	BrandName           *string  `protobuf:"bytes,9,opt,name=brand_name,json=brandName" form:"brand_name" json:"brand_name,omitempty" query:"brand_name"`
+	IsBrandAuthorized   *int64   `protobuf:"varint,10,opt,name=is_brand_authorized,json=isBrandAuthorized" form:"is_brand_authorized" json:"is_brand_authorized,omitempty" query:"is_brand_authorized"`
+	LogoModelBrandId    *int64   `protobuf:"varint,11,opt,name=logo_model_brand_id,json=logoModelBrandId" form:"logo_model_brand_id" json:"logo_model_brand_id,omitempty" query:"logo_model_brand_id"`
+	LogoModelBrandName  *string  `protobuf:"bytes,12,opt,name=logo_model_brand_name,json=logoModelBrandName" form:"logo_model_brand_name" json:"logo_model_brand_name,omitempty" query:"logo_model_brand_name"`
+	ImageModelBrandId   *int64   `protobuf:"varint,13,opt,name=image_model_brand_id,json=imageModelBrandId" form:"image_model_brand_id" json:"image_model_brand_id,omitempty" query:"image_model_brand_id"`
+	ImageModelBrandName *string  `protobuf:"bytes,14,opt,name=image_model_brand_name,json=imageModelBrandName" form:"image_model_brand_name" json:"image_model_brand_name,omitempty" query:"image_model_brand_name"`
+	Extra               *string  `protobuf:"bytes,15,opt,name=extra" form:"extra" json:"extra,omitempty" query:"extra"`
 }
 
 func (x *Product) Reset() {
@@ -2723,11 +2723,11 @@ func (x *Product) GetProductName() string {
 	return ""
 }
 
-func (x *Product) GetImageUrls() string {
-	if x != nil && x.ImageUrls != nil {
-		return *x.ImageUrls
+func (x *Product) GetImageUrls() []string {
+	if x != nil {
+		return x.ImageUrls
 	}
-	return ""
+	return nil
 }
 
 func (x *Product) GetShopImageUrl() string {
@@ -3103,7 +3103,7 @@ var file_miner_api_proto_rawDesc = []byte{
 	0x0a, 0x0c, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02,
 	0x20, 0x02, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x4e, 0x61, 0x6d,
 	0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x5f, 0x75, 0x72, 0x6c, 0x73, 0x18,
-	0x03, 0x20, 0x02, 0x28, 0x09, 0x52, 0x09, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x55, 0x72, 0x6c, 0x73,
+	0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x55, 0x72, 0x6c, 0x73,
 	0x12, 0x24, 0x0a, 0x0e, 0x73, 0x68, 0x6f, 0x70, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x5f, 0x75,
 	0x72, 0x6c, 0x18, 0x04, 0x20, 0x02, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x68, 0x6f, 0x70, 0x49, 0x6d,
 	0x61, 0x67, 0x65, 0x55, 0x72, 0x6c, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x68, 0x6f, 0x70, 0x5f, 0x69,
