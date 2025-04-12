@@ -125,3 +125,13 @@ func _query3Mw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _mock_producer_qpsMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _updatemockproducerqpsMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}

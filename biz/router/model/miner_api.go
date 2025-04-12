@@ -34,6 +34,10 @@ func Register(r *server.Hertz) {
 		}
 	}
 	{
+		_mock_producer_qps := root.Group("/mock_producer_qps", _mock_producer_qpsMw()...)
+		_mock_producer_qps.POST("/update", append(_updatemockproducerqpsMw(), model.UpdateMockProducerQps)...)
+	}
+	{
 		_task := root.Group("/task", _taskMw()...)
 		_task.POST("/run", append(_runtaskMw(), model.RunTask)...)
 		{
