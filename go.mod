@@ -7,7 +7,7 @@ require (
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
 	github.com/wxl-server/common v0.0.0-20250302041515-f626a63a7fe0
-	github.com/wxl-server/idl_gen v0.0.0-20250412204907-98c77f85d8fe
+	github.com/wxl-server/idl_gen v0.0.0-20250412213807-78a607aed666
 	google.golang.org/protobuf v1.33.0
 )
 

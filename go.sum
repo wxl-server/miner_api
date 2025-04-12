@@ -237,6 +237,8 @@ github.com/wxl-server/common v0.0.0-20250302041515-f626a63a7fe0 h1:Ew1YNyMerF2fy
 github.com/wxl-server/common v0.0.0-20250302041515-f626a63a7fe0/go.mod h1:ttXl7msyGGdllN5iMbIwgQsQbEounzZqLFXBhPuokM8=
 github.com/wxl-server/idl_gen v0.0.0-20250412204907-98c77f85d8fe h1:kIfO884CtS6QX80ozxZ9uuVRfMB308YNg7hgLSoVoeA=
 github.com/wxl-server/idl_gen v0.0.0-20250412204907-98c77f85d8fe/go.mod h1:dNv/KtsF0QHfyrDBlSizUBFI5RmrsFoTquLzbJdIdN0=
+github.com/wxl-server/idl_gen v0.0.0-20250412213807-78a607aed666 h1:RQz9OiTJR6jYdypa09j/zWmeUrxcrtOhP2g9bkAbPU4=
+github.com/wxl-server/idl_gen v0.0.0-20250412213807-78a607aed666/go.mod h1:dNv/KtsF0QHfyrDBlSizUBFI5RmrsFoTquLzbJdIdN0=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=

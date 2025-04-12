@@ -73,6 +73,8 @@ func (h *UpdateMockProducerQpsHandler) HttpReq2RpcReq(httpReq *model.UpdateMockP
 		ProductShopInfoQps:       httpReq.ProductShopInfoQps,
 		ProductLogoModelInfoQps:  httpReq.ProductLogoModelInfoQps,
 		ProductImageModelInfoQps: httpReq.ProductImageModelInfoQps,
+		SetConsumer:              httpReq.SetConsumer,
+		SetProducer:              httpReq.SetProducer,
 	}
 }
 
