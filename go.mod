@@ -7,12 +7,13 @@ require (
 	github.com/cloudwego/hertz v0.9.4
 	github.com/cloudwego/kitex v0.12.1
 	github.com/wxl-server/common v0.0.0-20250302041515-f626a63a7fe0
-	github.com/wxl-server/idl_gen v0.0.0-20250412182453-4cad6dac48dc
+	github.com/wxl-server/idl_gen v0.0.0-20250412204907-98c77f85d8fe
 	google.golang.org/protobuf v1.33.0
 )
 
 require (
 	github.com/aliyun/alibaba-cloud-sdk-go v1.61.18 // indirect
+	github.com/apache/thrift v0.13.0 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/bytedance/sonic v1.12.5 // indirect
 	github.com/bytedance/sonic/loader v0.2.0 // indirect
@@ -23,6 +24,7 @@ require (
 	github.com/cloudwego/frugal v0.2.3 // indirect
 	github.com/cloudwego/gopkg v0.1.3 // indirect
 	github.com/cloudwego/iasm v0.2.0 // indirect
+	github.com/cloudwego/kitex/pkg/protocol/bthrift v0.0.0-20250411071612-9ba8fdc7ec79 // indirect
 	github.com/cloudwego/localsession v0.1.1 // indirect
 	github.com/cloudwego/netpoll v0.6.5 // indirect
 	github.com/cloudwego/runtimex v0.1.0 // indirect
